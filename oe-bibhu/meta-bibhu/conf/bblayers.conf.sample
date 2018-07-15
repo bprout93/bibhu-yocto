@@ -1,0 +1,12 @@
+# LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+LCONF_VERSION = "6"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+BBLAYERS ?= " \
+  /home/bibhu/bibhu_yocto/oe-core/meta \
+  /home/bibhu/bibhu_yocto/oe-bibhu/meta-bibhu \
+  /home/bibhu/bibhu_yocto/oe-core/meta-yocto-bsp \
+  /home/bibhu/bibhu_yocto/oe-core/meta-yocto \
+  "

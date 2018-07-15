@@ -1,0 +1,77 @@
+#!/bin/sh
+
+# OE Build Environment Setup Script
+#
+# Copyright (C) 2006-2011 Linux Foundation
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+#
+# Normally this is called as '. ./oe-init-build-env builddir'
+#
+# This works in most shells (not dash), but not all of them pass arg1 when
+# being sourced.   To workaround the shell limitation use "set arg1" prior 
+# to sourcing this script.
+#
+
+# if sourced from shell prompt
+BUILD_DIRECTORY=$2
+TARGET_DEVICE=$1
+
+# if sourced from another script which may define TMP_BUILD_DIRECTORY and TMP_TARGET_DEVICE
+[ ! -z $TMP_BUILD_DIRECTORY ] && TARGET_DEVICE=$TMP_BUILD_DIRECTORY
+[ ! -z $TMP_TARGET_DEVICE ] && TARGET_DEVICE=$TMP_TARGET_DEVICE
+
+SETUP_ENV_TARGET_DEVICE_SET_HERE=0
+if [  "x$1" = "x" ];then
+	unset BUILD_DIRECTORY
+	unset BUILDDIR
+    SETUP_ENV_TARGET_DEVICE_SET_HERE=1
+    TARGET_DEVICE=
+fi
+
+if [ -z $TARGET_DEVICE ];then
+    #default target if not launched from build_script
+    unset BUILD_DIRECTORY
+	unset BUILDDIR
+    SETUP_ENV_TARGET_DEVICE_SET_HERE=1
+    TARGET_DEVICE=$1
+fi
+
+
+if [ -z "$ZSH_NAME" ] && [ "x$0" = "x./oe-init-build-env" ]; then
+   echo "Error: This script needs to be sourced. Please run as '. ./oe-init-build-env'"
+else
+   if [ -n "$BASH_SOURCE" ]; then
+      OEROOT="`dirname $BASH_SOURCE`"
+   else
+      OEROOT="`pwd`"
+   fi
+   #echo $OEROOT
+   OEROOT=`readlink -f "$OEROOT"`
+   ROOT_BIBHU="$OEROOT"
+   export ROOT_BIBHU
+   export OEROOT
+   . $OEROOT/oe-bibhu/scripts_utils/oe-buildenv-internal && \
+        $OEROOT/oe-bibhu/scripts_utils/oe-setup-builddir "$TARGET_DEVICE" "$3" && \
+        [ -n "$BUILDDIR" ] && cd $BUILDDIR
+   unset OEROOT
+   unset BBPATH
+fi
+
+if [ "$SETUP_ENV_TARGET_DEVICE_SET_HERE" = "1" ];then
+    unset TARGET_DEVICE
+fi
+
