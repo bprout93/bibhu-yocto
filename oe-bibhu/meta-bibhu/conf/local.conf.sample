@@ -15,11 +15,6 @@
 # Set a few Preferred Providers that aren't specified elsewhere
 PREFERRED_PROVIDER_sshd = "openssh"
 
-# Use Gumstix source mirror as default premirror
-SOURCE_MIRROR_URL ?= "http://source-cache.gumstix.org/"
-INHERIT += "own-mirrors"
-#BB_GENERATE_MIRROR_TARBALLS = "1"
-
 #
 # Parallelism Options
 #

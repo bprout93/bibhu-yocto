@@ -1,6 +1,6 @@
 U_BOOT_BUILDDIR = "${WORKDIR}/build_uboot"
 
-require u-boot-bpA20.inc
+require u-boot-rw.inc
 
 COMPATIBLE_MACHINE = "bpA20"
 

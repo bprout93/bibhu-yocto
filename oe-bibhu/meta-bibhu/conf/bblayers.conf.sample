@@ -9,4 +9,6 @@ BBLAYERS ?= " \
   /home/bibhu/bibhu_yocto/oe-bibhu/meta-bibhu \
   /home/bibhu/bibhu_yocto/oe-core/meta-yocto-bsp \
   /home/bibhu/bibhu_yocto/oe-core/meta-yocto \
+  /home/bibhu/bibhu_yocto/oe-bibhu/meta-browser \
+  /home/bibhu/bibhu_yocto/oe-core/meta-openembedded/meta-oe \
   "

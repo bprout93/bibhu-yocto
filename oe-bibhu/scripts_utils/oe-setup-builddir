@@ -37,8 +37,8 @@ fi
 
 #checking the validity parameter following available systems
 if [  $# -gt 2 ];then
-	echo "Error : A parameter is required : 
-    - the system type : like mident or sabrelite 
+	echo "Error : A parameter is required :
+    - the system type : like mident or sabrelite
 	"
 	exit 1
 fi
@@ -47,12 +47,13 @@ IS_SYSTEM_VALID=0
 AVAILABLE_IMAGES=
 AVAILABLE_MACHINES=
 SYSTEM_SUBDIRECTORY=
-if [ "$1" = "bpA20" ]; then
+if [ "$1" = "bibhu" ]; then
 	IS_SYSTEM_VALID=1
 	AVAILABLE_IMAGES="
-	bpA20-sd-image
+	bibhu-bpA20-image
+	bibhu-bbb-image
 	"
-	AVAILABLE_MACHINES=("bpA20")
+	AVAILABLE_MACHINES=("bpA20" "bbb")
 	SYSTEM_SUBDIRECTORY="meta-bibhu"
 fi
 
@@ -60,7 +61,7 @@ cd "$BUILDDIR"
 
 TEMPLATECONF=${TEMPLATECONF:-"$SYSTEM_SUBDIRECTORY"/conf}
 
-# 
+#
 # $TEMPLATECONF can point to a directory for the template local.conf & bblayers.conf
 #
 if [ "x" != "x$TEMPLATECONF" ]; then
@@ -84,9 +85,9 @@ fi
 if ! (test -r "$BUILDDIR/conf/local.conf"); then
 cat <<EOM
 You had no conf/local.conf file. This configuration file has therefore been
-created for you with some default values. You may wish to edit it to use a 
-different MACHINE (target hardware) or enable parallel build options to take 
-advantage of multiple cores for example. See the file for more information as 
+created for you with some default values. You may wish to edit it to use a
+different MACHINE (target hardware) or enable parallel build options to take
+advantage of multiple cores for example. See the file for more information as
 common configuration options are commented.
 
 The Yocto Project has extensive documentation about OE including a reference manual
