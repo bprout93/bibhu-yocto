@@ -53,7 +53,7 @@ if [ "$1" = "bibhu" ]; then
 	bibhu-bpA20-image
 	bibhu-bbb-image
 	"
-	AVAILABLE_MACHINES=("bpA20" "bbb" "sama5d3")
+	AVAILABLE_MACHINES=("bpA20" "bbb" "sama5d3" "rpi0")
 	SYSTEM_SUBDIRECTORY="meta-bibhu"
 fi
 

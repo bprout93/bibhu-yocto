@@ -5,10 +5,10 @@ LCONF_VERSION = "6"
 BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 BBLAYERS ?= " \
-  /home/bibhu/bibhu_yocto/oe-core/meta \
-  /home/bibhu/bibhu_yocto/oe-bibhu/meta-bibhu \
-  /home/bibhu/bibhu_yocto/oe-core/meta-yocto-bsp \
-  /home/bibhu/bibhu_yocto/oe-core/meta-yocto \
-  /home/bibhu/bibhu_yocto/oe-bibhu/meta-browser \
-  /home/bibhu/bibhu_yocto/oe-core/meta-openembedded/meta-oe \
+  ##COREBASE##/oe-core/meta \
+  ##COREBASE##/oe-bibhu/meta-bibhu \
+  ##COREBASE##/oe-core/meta-yocto-bsp \
+  ##COREBASE##/oe-core/meta-yocto \
+  ##COREBASE##/oe-bibhu/meta-browser \
+  ##COREBASE##/oe-core/meta-openembedded/meta-oe \
   "
