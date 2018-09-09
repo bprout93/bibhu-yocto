@@ -65,3 +65,7 @@ _A list of my commonly used Git commands_
 | `git diff [source branch] [target branch}` | Preview changes before merging |
 
 git push -f origin HEAD:master (To remove head from remote)
+
+### To push the commit
+
+git push origin HEAD
