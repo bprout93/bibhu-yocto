@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Music Player
+Comment=Sample QT Music Player
+Exec=/usr/bin/SimplePlayer
+Terminal=false
+MultipleArgs=false
+Type=Application
+Icon=music.png
+Categories=Application;Internet;Network;
+SingleInstance=true

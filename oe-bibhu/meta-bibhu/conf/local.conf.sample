@@ -56,7 +56,7 @@ PARALLEL_MAKE ?= "-j ${@oe.utils.cpu_count()}"
 #MACHINE ?= "pepper"
 #MACHINE ?= "duovero"
 
-MACHINE = "bpA20"
+MACHINE = "bpa20"
 
 #
 # Where to place downloads

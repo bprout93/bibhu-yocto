@@ -1,0 +1,62 @@
+diff --no-dereference -urN tmp/work-shared/bpa20/kernel-source/arch/arm/boot/dts/sun7i-a20-bananapi.dts ../src-bibhu/kernel/kernel-4.14.52/arch/arm/boot/dts/sun7i-a20-bananapi.dts
+--- a/arch/arm/boot/dts/sun7i-a20-bananapi.dts	2018-06-26 05:36:33.000000000 +0530
++++ b/arch/arm/boot/dts/sun7i-a20-bananapi.dts	2019-01-01 14:34:34.801784058 +0530
+@@ -109,6 +109,10 @@
+ 		>;
+ };
+
++&mali {
++	status = "okay";
++};
++
+ &ehci0 {
+ 	status = "okay";
+ };
+diff --no-dereference -urN tmp/work-shared/bpa20/kernel-source/drivers/video/logo/Kconfig ../src-bibhu/kernel/kernel-source/drivers/video/logo/Kconfig
+--- a/drivers/video/logo/Kconfig	2018-07-18 11:26:38.000000000 +0530
++++ b/drivers/video/logo/Kconfig	2019-01-03 13:15:58.473606723 +0530
+@@ -37,6 +37,10 @@
+ 	depends on MAC
+ 	default y
+
++config LOGO_PUBG
++	bool "PUBG Logo"
++	default n
++
+ config LOGO_PARISC_CLUT224
+ 	bool "224-color PA-RISC Linux logo"
+ 	depends on PARISC
+diff --no-dereference -urN tmp/work-shared/bpa20/kernel-source/drivers/video/logo/Makefile ../src-bibhu/kernel/kernel-source/drivers/video/logo/Makefile
+--- a/drivers/video/logo/Makefile	2018-07-18 11:26:38.000000000 +0530
++++ b/drivers/video/logo/Makefile	2019-01-03 13:11:36.489410800 +0530
+@@ -6,6 +6,7 @@
+ obj-$(CONFIG_LOGO_LINUX_VGA16)		+= logo_linux_vga16.o
+ obj-$(CONFIG_LOGO_LINUX_CLUT224)	+= logo_linux_clut224.o
+ obj-$(CONFIG_LOGO_DEC_CLUT224)		+= logo_dec_clut224.o
++obj-$(CONFIG_LOGO_PUBG)           += logo_linux_pubg_clut224.o
+ obj-$(CONFIG_LOGO_MAC_CLUT224)		+= logo_mac_clut224.o
+ obj-$(CONFIG_LOGO_PARISC_CLUT224)	+= logo_parisc_clut224.o
+ obj-$(CONFIG_LOGO_SGI_CLUT224)		+= logo_sgi_clut224.o
+diff --no-dereference -urN tmp/work-shared/bpa20/kernel-source/include/linux/linux_logo.h ../src-bibhu/kernel/kernel-source/include/linux/linux_logo.h
+--- a/include/linux/linux_logo.h	2018-07-18 11:26:38.000000000 +0530
++++ b/include/linux/linux_logo.h	2019-01-03 13:13:37.269510646 +0530
+@@ -38,6 +38,7 @@
+ extern const struct linux_logo logo_linux_clut224;
+ extern const struct linux_logo logo_dec_clut224;
+ extern const struct linux_logo logo_mac_clut224;
++extern const struct linux_logo logo_linux_pubg_clut224;
+ extern const struct linux_logo logo_parisc_clut224;
+ extern const struct linux_logo logo_sgi_clut224;
+ extern const struct linux_logo logo_sun_clut224;
+--- a/drivers/video/logo/logo.c	2018-07-18 11:26:38.000000000 +0530
++++ b/drivers/video/logo/logo.c	2019-01-03 18:06:22.874103843 +0530
+@@ -99,6 +99,9 @@
+ 		/* SuperH Linux logo */
+ 		logo = &logo_superh_clut224;
+ #endif
++#ifdef CONFIG_LOGO_PUBG
++		logo = &logo_linux_pubg_clut224;
++#endif
+ 	}
+ 	return logo;
+ }

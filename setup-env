@@ -22,7 +22,7 @@
 # Normally this is called as '. ./oe-init-build-env builddir'
 #
 # This works in most shells (not dash), but not all of them pass arg1 when
-# being sourced.   To workaround the shell limitation use "set arg1" prior 
+# being sourced.   To workaround the shell limitation use "set arg1" prior
 # to sourcing this script.
 #
 

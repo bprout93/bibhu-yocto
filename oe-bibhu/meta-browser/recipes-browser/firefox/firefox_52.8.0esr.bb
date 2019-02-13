@@ -123,9 +123,9 @@ FILES_${PN} = "${bindir}/${PN} \
 							 ${libdir}/${PN}-${MOZ_APP_BASE_VERSION}/gmp-clearkey/0.1/libclearkey.so \
 							 ${libdir}/${PN}-${MOZ_APP_BASE_VERSION}/gmp-clearkey/0.1/clearkey.info \
                ${bindir}/defaults"
-FILES_${PN}-dev += "${datadir}/idl ${bindir}/${PN}-config ${libdir}/${PN}-devel-*"
+FILES_${PN}-dev += "${datadir}/idl ${bindir}/${PN}-config ${libdir}/${PN}-devel-*/bin ${libdir}/${PN}-devel-*/idl ${libdir}/${PN}-devel-*/lib ${libdir}/${PN}-devel-*/include ${libdir}/${PN}-devel-*/xpcom-config.h ${libdir}/${PN}-devel-*/sdk/bin/* ${libdir}/${PN}-devel-*/sdk/lib/libxul.so ${libdir}/${PN}-${MOZ_APP_BASE_VERSION}/firefox-bin"
 FILES_${PN}-staticdev += "${libdir}/${PN}-devel-*/sdk/lib/*.a"
-FILES_${PN}-dbg += "${libdir}/${PN}-${MOZ_APP_BASE_VERSION}/*/*/.debug/* ${libdir}/${PN}-${MOZ_APP_BASE_VERSION}/*/.debug/* ${libdir}/${PN}-${MOZ_APP_BASE_VERSION}-devel-*/sdk/lib/.debug/*"
+FILES_${PN}-dbg += "${libdir}/${PN}-${MOZ_APP_BASE_VERSION}/*/*/.debug/* ${libdir}/${PN}-${MOZ_APP_BASE_VERSION}/*/.debug/* ${libdir}/${PN}-${MOZ_APP_BASE_VERSION}-devel-*/sdk/lib/.debug/* ${libdir}/${PN}-${MOZ_APP_BASE_VERSION}/.debug/* ${libdir}/${PN}-devel-*/sdk/lib/.debug/*"
 # We don't build XUL as system shared lib, so we can mark all libs as private
 PRIVATE_LIBS = "libmozjs.so \
                 libxpcom.so \

@@ -50,10 +50,10 @@ SYSTEM_SUBDIRECTORY=
 if [ "$1" = "bibhu" ]; then
 	IS_SYSTEM_VALID=1
 	AVAILABLE_IMAGES="
-	bibhu-bpA20-image
+	bibhu-bpa20-image
 	bibhu-bbb-image
 	"
-	AVAILABLE_MACHINES=("bpA20" "bbb" "sama5d3" "rpi0")
+	AVAILABLE_MACHINES=("bpa20" "bbb" "sama5d3" "rpi0")
 	SYSTEM_SUBDIRECTORY="meta-bibhu"
 fi
 

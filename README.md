@@ -1,6 +1,6 @@
 # Steps to Build binary
 
-source setup-env bibhu build_bpA20 bpA20
+source setup-env bibhu build_bpa20 bpa20
 
 source setup-env <platform> build_<Machine> <Machine>
 
